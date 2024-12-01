@@ -33,13 +33,17 @@ import {
   DropdownMenuTrigger,
 } from "@unsend/ui/src/dropdown-menu";
 import { ThemeSwitcher } from "~/components/theme/ThemeSwitcher";
+import { SidebarProvider } from "@unsend/ui/src/sidebar";
+import { DashboardSidebar } from "./dashboard-sidebar";
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const { data: session } = useSession();
 
   return (
+    <SidebarProvider>
     <div className="flex min-h-screen w-full h-full">
-      <div className="hidden bg-muted/20 md:block md:w-[230px]">
+        <DashboardSidebar/>
+      {/* <div className="hidden bg-muted/20 md:block md:w-[230px]">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 gap-4 items-center px-4 lg:h-[60px] lg:px-6">
             <Link href="/" className="flex items-center gap-2 font-semibold">
@@ -106,7 +110,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
           </div>
           <div className="mt-auto p-4"></div>
         </div>
-      </div>
+      </div> */}
       <div className="flex flex-1 flex-col">
         <header className=" h-14 items-center gap-4 hidden  bg-muted/20 px-4 lg:h-[60px] lg:px-6">
           <Sheet>
@@ -192,5 +196,6 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         </main>
       </div>
     </div>
+    </SidebarProvider>
   );
 }
